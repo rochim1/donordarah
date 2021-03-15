@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\usercontroller;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +18,37 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// passing data from middleware to route/view/conttroller
+Route::middleware(['mainVariable'])->group(function(){
+    // Route::get('/welcome', [usercontroller::class,'welcome'])->name('home');
+    Route::get('/welcome',  function (Request $request, $data) {
+        return view('menu.landing', compact('data'));
+    })->name('home');
 
-Route::get('/wellcome', function () {
-    return view('menu.landing');
-})->name('home');
+    Route::get('/aboutus', function (Request $request, $data) {
+        return view('menu.about', compact('data'));
+    })->name('about');
+    
+    Route::get('/kasus', function (Request $request, $data) {
+        return view('menu.kasus', compact('data'));
+    })->name('about');
+    
+    Route::get('/event', function (Request $request, $data) {
+        return view('menu.kasus', compact('data'));
+    })->name('about');
+    
+    Route::get('/pages', function (Request $request, $data) {
+        return view('menu.kasus', compact('data'));
+    })->name('about');
+
+    Route::get('/blog', function (Request $request, $data) {
+        return view('menu.kasus', compact('data'));
+    })->name('about');
+
+    Route::get('/kontak', function (Request $request, $data) {
+        return view('menu.kasus', compact('data'));
+    })->name('about');
+});
 
 Route::get('/loginuser', function () {
     return view('menu.loginuser');
@@ -28,3 +57,4 @@ Route::get('/loginuser', function () {
 Route::get('/registeruser', function () {
     return view('menu.registeruser');
 })->name('registeruser');
+

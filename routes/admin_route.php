@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,7 @@ Route::get('/admin', function () {
 Route::get('/admin', function () {
     return view('admin.index');
 });
+Route::get('/webprofile', function () {
+    return view('admin.webprofile');
+});
+Route::post('/webprofile', [admincontroller::class, 'webprofile']);

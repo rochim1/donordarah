@@ -56,8 +56,8 @@
                         <div class="col col-md-6 col-sm-7 col-12">
                             <div class="contact-intro">
                                 <ul>
-                                    <li><i class="fi flaticon-call"></i>+000123456789</li>
-                                    <li><i class="fi flaticon-envelope"></i> nasarna@gmail.com</li>
+                                    <li><i class="fi flaticon-call"></i>+{{$data->telpon}}</li>
+                                    <li><i class="fi flaticon-envelope"></i>{{$data->email}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="{{route('home')}}">
                             <img src="{{asset('assets/images/logo-3.png')}}" alt="logo">
                         </a>
                     </div>
@@ -97,7 +97,7 @@
                                     <li><a href="index-3.html">Home style 3</a></li>
                                 </ul>
                             </li>
-                            <li><a href="about.html">About</a></li>
+                            <li><a href="{{route('about')}}">About</a></li>
                             <li class="menu-item-has-children">
                                 <a href="#">Causes</a>
                                 <ul class="sub-menu">
@@ -229,10 +229,11 @@
                             <div class="col col-lg-3 col-md-3 col-sm-6">
                                 <div class="widget about-widget">
                                     <div class="logo widget-title">
-                                        <img src="assets/images/logo-2.png" alt="blog">
+                                        <img src="assets/images/logo-3.png" alt="blog">
                                     </div>
-                                    <p>Build and Earn with your online store with lots of cool and exclusive
-                                        wpo-features </p>
+                                    <p>
+                                        {{$data->deskripsi_perusahaan}}
+                                    </p>
                                     <ul>
                                         <li><a href="#"><i class="ti-facebook"></i></a></li>
                                         <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
@@ -288,9 +289,9 @@
                                     <p>online store with lots of cool and exclusive wpo-features</p>
                                     <div class="contact-ft">
                                         <ul>
-                                            <li><i class="fi flaticon-pin"></i>28 Street, New York City, USA</li>
-                                            <li><i class="fi flaticon-call"></i>+000123456789</li>
-                                            <li><i class="fi flaticon-envelope"></i>Hastium@gmail.com</li>
+                                            <li><i class="fi flaticon-pin"></i>{{$data->alamat}}</li>
+                                            <li><i class="fi flaticon-call"></i>{{$data->telpon}}</li>
+                                            <li><i class="fi flaticon-envelope"></i>{{$data->email}}</li>
                                         </ul>
                                     </div>
                                 </div>

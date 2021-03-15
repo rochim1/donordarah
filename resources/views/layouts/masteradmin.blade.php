@@ -12,7 +12,7 @@
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets_admin/images/favicon.ico">
+    <link rel="icon" href="{{asset('logo.svg')}}">
     <!-- App css -->
     <link href="assets_admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
     <link href="assets_admin/css/icons.min.css" rel="stylesheet" type="text/css" />
@@ -258,9 +258,16 @@
                     <li class="menu-title">Navigation</li>
 
                     <li>
-                        <a href="index.html">
+                        <a href="/admin">
                             <i class="ti-home"></i>
                             <span> Dashboard </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/webprofile">
+                            <i class="ti-world"></i>
+                            <span> Web Profile </span>
                         </a>
                     </li>
 
