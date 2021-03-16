@@ -31,23 +31,23 @@ Route::middleware(['mainVariable'])->group(function(){
     
     Route::get('/kasus', function (Request $request, $data) {
         return view('menu.kasus', compact('data'));
-    })->name('about');
+    })->name('kasus');
     
     Route::get('/event', function (Request $request, $data) {
-        return view('menu.kasus', compact('data'));
-    })->name('about');
+        return view('menu.event', compact('data'));
+    })->name('event');
     
-    Route::get('/pages', function (Request $request, $data) {
-        return view('menu.kasus', compact('data'));
-    })->name('about');
-
+    Route::get('/permohonan', function (Request $request, $data) {
+        return view('menu.permohonan', compact('data'));
+    })->name('permohonan');
+    
     Route::get('/blog', function (Request $request, $data) {
-        return view('menu.kasus', compact('data'));
-    })->name('about');
+        return view('menu.blog', compact('data'));
+    })->name('blog');
 
     Route::get('/kontak', function (Request $request, $data) {
-        return view('menu.kasus', compact('data'));
-    })->name('about');
+        return view('menu.kontak', compact('data'));
+    })->name('kontak');
 });
 
 Route::get('/loginuser', function () {

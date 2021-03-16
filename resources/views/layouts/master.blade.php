@@ -14,7 +14,11 @@
     <link href="{{asset('assets/css/themify-icons.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/flaticon.css')}}" rel="stylesheet">
+
+    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+    {{-- <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet"> --}}
+    
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/owl.carousel.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/owl.theme.css')}}" rel="stylesheet">
@@ -64,9 +68,9 @@
                         <div class="col col-md-6 col-sm-5 col-12">
                             <div class="contact-info">
                                 <ul>
-                                    <li><a href="{{route('loginuser')}}">Login</a></li>
-                                    <li><a href="{{route('registeruser')}}">Sign Up</a></li>
-                                    <li><a class="theme-btn" href="donate.html">Donor Now</a></li>
+                                    <li><a href="{{route('loginuser')}}">Masuk</a></li>
+                                    <li><a href="{{route('registeruser')}}">Daftar</a></li>
+                                    <li><a class="theme-btn" href="donate.html">Donor Yuk</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -89,29 +93,20 @@
                     <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
                         <button class="close-navbar"><i class="ti-close"></i></button>
                         <ul class="nav navbar-nav">
+                            <li><a href="{{route('home')}}">Home</a></li>
+
+                            <li><a href="{{route('about')}}">Tentang Kami</a></li>
+
                             <li class="menu-item-has-children">
-                                <a href="#">Home</a>
+                                <a href="#">Kasus</a>
                                 <ul class="sub-menu">
-                                    <li><a href="index.html">Home style 1</a></li>
-                                    <li><a href="index-2.html">Home style 2</a></li>
-                                    <li><a href="index-3.html">Home style 3</a></li>
+                                    <li><a href="{{route('permohonan')}}">Buat Permohonan</a></li>
+                                    <li><a href="{{route('kasus')}}">Kasus</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{{route('about')}}">About</a></li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Causes</a>
-                                <ul class="sub-menu">
-                                    <li><a href="causes.html">Causes</a></li>
-                                    <li><a href="causes-single.html">Causes Single</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Event</a>
-                                <ul class="sub-menu">
-                                    <li><a href="event.html">Event</a></li>
-                                    <li><a href="event-single.html">Event Single</a></li>
-                                </ul>
-                            </li>
+                            
+                            <li><a href="#">Event</a></li>
+
                             <li class="menu-item-has-children">
                                 <a href="#">Pages</a>
                                 <ul class="sub-menu">
@@ -121,6 +116,7 @@
                                     <li><a href="error.html">404 Page</a></li>
                                 </ul>
                             </li>
+                            
                             <li class="menu-item-has-children">
                                 <a href="#">Blog</a>
                                 <ul class="sub-menu">
@@ -137,6 +133,7 @@
                                     </li>
                                 </ul>
                             </li>
+                            
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </div><!-- end of nav-collapse -->
