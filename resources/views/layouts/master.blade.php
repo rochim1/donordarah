@@ -105,7 +105,7 @@
                                 </ul>
                             </li>
                             
-                            <li><a href="#">Event</a></li>
+                            <li><a href="{{route('event')}}">Event</a></li>
 
                             <li class="menu-item-has-children">
                                 <a href="#">Pages</a>
@@ -113,15 +113,16 @@
                                     <li><a href="about.html">About</a></li>
                                     <li><a href="donate.html">Donor</a></li>
                                     <li><a href="volunteer.html">Volunteer</a></li>
+                                    <li><a href="volunteer.html">Penghargaan</a></li>
                                     <li><a href="error.html">404 Page</a></li>
                                 </ul>
                             </li>
                             
                             <li class="menu-item-has-children">
-                                <a href="#">Blog</a>
+                                <a href="{{route('berita')}}">Berita</a>
                                 <ul class="sub-menu">
-                                    <li><a href="blog.html">Blog right sidebar</a></li>
-                                    <li><a href="blog-left.html">Blog left sidebar</a></li>
+                                    <li><a href="blog.html">Kesehatan</a></li>
+                                    <li><a href="blog-left.html">Edukasi</a></li>
                                     <li><a href="blog-fulwidth.html">Blog fullwidth</a></li>
                                     <li class="menu-item-has-children">
                                         <a href="#">Blog details</a>
@@ -134,7 +135,7 @@
                                 </ul>
                             </li>
                             
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="{{route('kontak')}}">Kontak</a></li>
                         </ul>
                     </div><!-- end of nav-collapse -->
                     <div class="cart-search-contact">

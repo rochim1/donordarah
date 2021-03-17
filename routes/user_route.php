@@ -41,13 +41,26 @@ Route::middleware(['mainVariable'])->group(function(){
         return view('menu.permohonan', compact('data'));
     })->name('permohonan');
     
-    Route::get('/blog', function (Request $request, $data) {
-        return view('menu.blog', compact('data'));
-    })->name('blog');
+    Route::get('/berita', function (Request $request, $data) {
+        return view('menu.berita', compact('data'));
+    })->name('berita');
 
     Route::get('/kontak', function (Request $request, $data) {
         return view('menu.kontak', compact('data'));
     })->name('kontak');
+    
+    Route::get('/berita/{nama}', function (Request $request, $nama ,$data) {
+        // parameter nama harus diletakkan setelah parameter data karena parameter nama diproses terlebih dahulu
+        // namun parameter hasil dari view ini tidak bisa menampilkan gambar 
+        // disebabkan karena url memiliki sub /../../ sehingga pemanggilan gambar harus ../ keluar 1 direktri terlebih dahulu
+        
+        return view('menu.detail-berita', compact('data'));
+    })->name('detailBerita');
+    
+    Route::get('/test', function (Request $request, $data) {
+        dd($request);
+        return view('menu.detail-berita', compact('data'));
+    })->name('test');   
 });
 
 Route::get('/loginuser', function () {
