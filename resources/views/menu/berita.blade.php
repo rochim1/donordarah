@@ -33,7 +33,7 @@
                             <li><a href="#"><i class="ti-calendar"></i> Sep 25,2020</a></li>
                             <li><a href="#"><i class="ti-heart"></i> 35</a></li>
                         </ul>
-                        {{-- <h3><a href="{{route('detailBerita')}}">Help the helpless who need you.</a></h3> --}}
+                        {{-- <h3><a href="{{route('detailBerita')->with('nama','muhammad nur rochim')}}">Help the helpless who need you.</a></h3> --}}
                         <h3><a href="{{route('detailBerita', ['nama' => 'muhammad nur rochim'])}}">Help the helpless who need you.</a></h3>
                         <p>It is a long established fact that a reader will be distracted by the readable content of a
                             page when looking at its layout. The point of using Lorem Ipsum is that it has a

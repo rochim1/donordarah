@@ -20,7 +20,7 @@
 <div class="wpo-about-video-area">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
+                    <div class="col-lg-8 col-lg-offset-2 mx-auto d-block">
                         <div class="wpo-about-video-item">
                             <div class="wpo-about-video-img">
                                 <img src="assets/images/about-vedio.jpg" alt="">

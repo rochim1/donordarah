@@ -57,10 +57,9 @@ Route::middleware(['mainVariable'])->group(function(){
         return view('menu.detail-berita', compact('data'));
     })->name('detailBerita');
     
-    Route::get('/test', function (Request $request, $data) {
-        dd($request);
-        return view('menu.detail-berita', compact('data'));
-    })->name('test');   
+    Route::get('/permohonan/list/{id}', function (Request $request,$id, $data) {
+        return view('menu.listpermohonan', compact('data'));
+    })->name('listpermohonan');   
 });
 
 Route::get('/loginuser', function () {

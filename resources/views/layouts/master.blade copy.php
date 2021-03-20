@@ -16,8 +16,8 @@
     <link href="{{asset('assets/css/flaticon.css')}}" rel="stylesheet">
 
     {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
-    {{-- <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet"> --}}
-    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+    {{-- <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet"> --}}
     
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/owl.carousel.css')}}" rel="stylesheet">
@@ -30,33 +30,6 @@
     <link href="{{asset('assets/css/odometer-theme-default.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/nice-select.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-    <style>
-        #navbar{
-                -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    line-height: 1.42857143;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1rem;
-    color: #525252;
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
-    padding-right: 15px;
-    padding-left: 15px;
-    width: auto;
-    border-top: 0;
-    box-shadow: none;
-    float: right!important;
-    display: block!important;
-    height: auto!important;
-    padding-bottom: 0;
-    overflow: visible!important;
-    margin-left: 0;
-    border-color: #e7e7e7;
-    text-transform: uppercase;
-    transition: all 0.5s;
-    margin-right: 100px;
-        }
-    </style>
     @yield('style')
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -104,7 +77,7 @@
                     </div>
                 </div>
             </div> <!-- end topbar -->
-            <nav class="navigation navbar-expand-lg navbar navbar-default">
+            <nav class="navigation navbar navbar-default">
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="open-btn">
@@ -117,10 +90,8 @@
                             <img src="{{asset('assets/images/logo-3.png')}}" alt="logo">
                         </a>
                     </div>
-
-                    <div id="navbar" class="navbar-collapse collapse navbar-right float-right navigation-holder">
+                    <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
                         <button class="close-navbar"><i class="ti-close"></i></button>
-{{-- todo --}}
                         <ul class="nav navbar-nav">
                             <li><a href="{{route('home')}}">Home</a></li>
 
@@ -167,7 +138,6 @@
                             <li><a href="{{route('kontak')}}">Kontak</a></li>
                         </ul>
                     </div><!-- end of nav-collapse -->
-
                     <div class="cart-search-contact">
                         <div class="mini-cart">
                             <button class="cart-toggle-btn"> <i class="fi flaticon-shopping-bag"></i> <span
@@ -232,7 +202,7 @@
             <section class="wpo-news-letter-section">
                 <div class="container">
                     <div class="row">
-                        <div class="col col-md-6 offset-md-3 col-sm-8 offset-sm-2">
+                        <div class="col col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                             <div class="wpo-newsletter">
                                 <h3>Follow us For ferther information</h3>
                                 <div class="wpo-newsletter-form">
