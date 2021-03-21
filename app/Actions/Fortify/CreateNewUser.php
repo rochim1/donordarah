@@ -27,9 +27,11 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
+        // membuat user baru mengguankan fortify
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
+            'level' => 'admin',
             'password' => Hash::make($input['password']),
         ]);
     }

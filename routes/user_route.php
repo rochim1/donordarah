@@ -60,6 +60,10 @@ Route::middleware(['mainVariable'])->group(function(){
     Route::get('/permohonan/list/{id}', function (Request $request,$id, $data) {
         return view('menu.listpermohonan', compact('data'));
     })->name('listpermohonan');   
+    
+    Route::get('/permohonan/list/{id}/edit/{item}', function (Request $request,$id, $item, $data) {
+        return view('menu.editpermohonan', compact('data'));
+    })->name('listpermohonan');   
 });
 
 Route::get('/loginuser', function () {

@@ -70,25 +70,25 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
-    {
-        $hashed = Hash::make('password', [
-            'rounds' => 12,
-        ]);
+    // protected function create(array $data)
+    // {
+    //     $hashed = Hash::make('password', [
+    //         'rounds' => 12,
+    //     ]);
 
-        $this->hashed = $hashed;
-        $this->name = $array['name']; // unnecessery 
+    //     $this->hashed = $hashed;
+    //     $this->name = $array['name']; // unnecessery 
 
-        // todo membuat verifikasi akun lewat email otomatis , ini masih manual
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'level' => 'admin',
-            'verify_code' => $hashed,
-            'password' =>  Hash::make($data['password']),
-            'email_verified_at' => null,
-        ]);
-    }
+    //     // todo membuat verifikasi akun lewat email otomatis , ini masih manual
+    //     return User::create([
+    //         'name' => $data['name'],
+    //         'email' => $data['email'],
+    //         'level' => 'admin',
+    //         'verify_code' => $hashed,
+    //         'password' =>  Hash::make($data['password']),
+    //         'email_verified_at' => null,
+    //     ]);
+    // }
 
     protected function createGithub()
     {
