@@ -16,10 +16,14 @@ class VerifyRegistration extends Mailable
      *
      * @return void
      */
+    // variabel di bawah bersifat public dapat diakses pada bagian view pada fungsi build
+    public $name;
     public $hashed;
+
     public function __construct($send_data)
     {
-        $this->hashed = $send_data['title'];
+        $this->name = $send_data['name'];
+        $this->hashed = $send_data['hashed'];
     }
 
     /**

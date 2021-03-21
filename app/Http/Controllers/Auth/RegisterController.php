@@ -51,6 +51,10 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    
+    public $hashed = null;
+    public $name = null;
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -68,16 +72,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $hashed = Hash::make('password', [
+            'rounds' => 12,
+        ]);
+
+        $this->hashed = $hashed;
+        $this->name = $array['name']; // unnecessery 
+
+        // todo membuat verifikasi akun lewat email otomatis , ini masih manual
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'level' => 'admin',
+            'verify_code' => $hashed,
+            'password' =>  Hash::make($data['password']),
+            'email_verified_at' => null,
         ]);
     }
 
     protected function createGithub()
     {
-        // todo : membuat socialite callback nya didalam request
+        
+        // todo : membuat socialite callback nya didalam request (didalam parameter)
         $user = Socialite::driver('github')->user();
         $array = (array) $user;
 
@@ -98,16 +114,21 @@ class RegisterController extends Controller
             'rounds' => 12,
         ]);
 
+        $this->hashed = $hashed;
+        $this->name = $array['name'];
+
         return User::create([
-            'name' => $array['nickname'],
+            'name' => $array['name'],
             'email' => $array['email'],
+            'level' => 'admin',
+            'verify_code' => $hashed,
             'password' => $hashed,
+            'email_verified_at' => null,
         ]);
 
     }
 
-    public $hashed = null;
-    public $name = null;
+    
     protected function createGoogle()
     {
         // todo : membuat socialite callback nya didalam request
@@ -138,6 +159,7 @@ class RegisterController extends Controller
         $register = User::create([
             'name' => $array['name'],
             'email' => $array['email'],
+            'level' => 'admin',
             'verify_code' => $hashed,
             'password' => $hashed,
             'email_verified_at' => null,
