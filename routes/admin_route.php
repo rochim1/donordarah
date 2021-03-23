@@ -30,4 +30,8 @@ Route::get('/admin', function () {
 Route::get('/webprofile', function () {
     return view('admin.webprofile');
 });
+
+Route::get('/about', function () {
+    return view('menu.learnBlade');
+})->name('about');
 Route::post('/webprofile', [admincontroller::class, 'webprofile']);

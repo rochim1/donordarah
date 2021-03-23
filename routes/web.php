@@ -20,10 +20,6 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-Route::get('/', function () {
-    return view('menu.landing');
-});
 // route untuk lupa password
 Route::get('forget-password', [App\Http\Controllers\auth\ForgotPasswordController::class,'getEmail'])->name('forget-password');
 Route::post('forget-password', [App\Http\Controllers\auth\ForgotPasswordController::class,'postEmail'])->name('forget-password');

@@ -118,7 +118,7 @@
                         </a>
                     </div>
 
-                    <div id="navbar" class="navbar-collapse collapse navbar-right float-right navigation-holder">
+                    <div id="navbar" class=" collapse navbar-right float-right navigation-holder">
                         <button class="close-navbar"><i class="ti-close"></i></button>
 {{-- todo --}}
                         <ul class="nav navbar-nav">

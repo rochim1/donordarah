@@ -1364,9 +1364,11 @@ img {
     -o-border-radius: 0;
     -ms-border-radius: 0;
     border-radius: 0;
+    padding: 0px;
 }
 .navbar-brand>img {
     max-width: 180px;
+    padding: 10px;
 }
 
 .wpo-site-header .navigation>.container {
@@ -1394,6 +1396,7 @@ img {
 
 .wpo-header-style-3 #navbar>ul li a {
     color: #666;
+    display: block;
 }
 
 .wpo-site-header #navbar>ul li a:hover {
@@ -2613,7 +2616,7 @@ img {
 
     .wpo-header-style-2 .navbar-header button,
     .wpo-header-style-3 .navbar-header button {
-        top: 23px;
+        top: 15px;
     }
 }
 

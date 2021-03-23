@@ -21,6 +21,10 @@ use Illuminate\Http\Request;
 // passing data from middleware to route/view/conttroller
 Route::middleware(['mainVariable'])->group(function(){
     // Route::get('/welcome', [usercontroller::class,'welcome'])->name('home');
+    Route::get('/',  function (Request $request, $data) {
+        return view('menu.landing', compact('data'));
+    });
+    
     Route::get('/welcome',  function (Request $request, $data) {
         return view('menu.landing', compact('data'));
     })->name('home');

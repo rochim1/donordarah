@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="h4 font-weight-bold">
-            {{ __('API Tokens') }}
+            {{ __('Dashboard') }}
         </h2>
+        
     </x-slot>
-
-    <div>
-        @livewire('api.api-token-manager')
-    </div>
+<x-jet-danger-button>{{__('auth.tes')}}</x-jet-danger-button>
+    <x-about />
+    
 </x-app-layout>
