@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSessionsTable extends Migration
+class CreateStokDarah extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateSessionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
-            $table->string('ip_address', 45)->nullable();
-            $table->text('user_agent')->nullable();
-            $table->text('payload');
-            $table->integer('last_activity')->index();
+        Schema::create('stok_darah', function (Blueprint $table) {
+            $table->id('id_stokdrh');
+            $table->bigInteger('id_darah')->unsigned();
+            $table->integer('jumlah_kantung');
+            $table->timestamps();
+
+            $table->foreign('id_darah')->references('id_golDar')->on('golongan_darah')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateSessionsTable extends Migration
     {	Schema::disableForeignKeyConstraints();
         Schema::connection('news-rs')->disableForeignKeyConstraints();
 	Schema::connection('mysqsl2')->disableForeignKeyConstraints();
-	Schema::dropIfExists('sessions');
+	Schema::dropIfExists('stok_darah');
     }
 }

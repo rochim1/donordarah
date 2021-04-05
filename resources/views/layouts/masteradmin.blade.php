@@ -21,7 +21,11 @@
 </head>
 
 <body>
-
+    
+@php
+    // dd(session()->all());
+    // dd(Auth::user());
+@endphp
     <!-- Begin page -->
     <div id="wrapper">
 
@@ -140,7 +144,19 @@
                         aria-haspopup="false" aria-expanded="false">
                         <img src="assets_admin/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
                         <span class="pro-user-name ml-1">
-                            Maxine K <i class="mdi mdi-chevron-down"></i>
+                            @php
+                                
+                                $nama = Auth::user()->name;
+                                $pieces = explode(" ", $nama);
+                                
+                                if (count($pieces) >= 2 ) {
+                                    
+                                    echo $pieces[0]." ".substr($pieces[1], 0, 1);        
+                                } else {
+                                    echo "cuma satu";
+                                }
+                            @endphp
+                            <i class="mdi mdi-chevron-down"></i>
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -170,11 +186,15 @@
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <form action="{{url('/logout')}}" method="POST">
+                        @csrf
+                        <button type="submit" class="dropdown-item notify-item">
                             <i class="mdi mdi-logout-variant"></i>
                             <span>Logout</span>
-                        </a>
+                        </button>
+                        </form>
 
+                        
                     </div>
                 </li>
 
@@ -244,9 +264,11 @@
                 <div class="float-left">
                     <img src="assets_admin/images/users/avatar-1.jpg" alt="" class="avatar-md rounded-circle">
                 </div>
-                <div class="user-info">
-                    <a href="#">Stanley Jones</a>
-                    <p class="text-muted m-0">Administrator</p>
+                <div class="user-info text-capitalize">
+                    <a href="#">{{ Auth::user()->name }}</a>
+                    <p class="text-muted m-0">
+                        {{ Auth::user()->level }}
+                    </p>
                 </div>
             </div>
 
@@ -268,6 +290,34 @@
                         <a href="/webprofile">
                             <i class="ti-world"></i>
                             <span> Web Profile </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/webprofile">
+                            <i class="ti-world"></i>
+                            <span> Berita </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/webprofile">
+                            <i class="ti-world"></i>
+                            <span> Bank Darah </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/webprofile">
+                            <i class="ti-world"></i>
+                            <span> User </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/webprofile">
+                            <i class="ti-world"></i>
+                            <span> Laporan </span>
                         </a>
                     </li>
 

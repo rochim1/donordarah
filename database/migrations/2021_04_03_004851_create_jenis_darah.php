@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSessionsTable extends Migration
+class CreateJenisDarah extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateSessionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
-            $table->string('ip_address', 45)->nullable();
-            $table->text('user_agent')->nullable();
-            $table->text('payload');
-            $table->integer('last_activity')->index();
+        Schema::create('jenis_darah', function (Blueprint $table) {
+            $table->id('id_jenisDarah');
+            $table->char('nama_jenisDarah');
+            $table->string('deskripsi');  
+            $table->timestamps();
         });
     }
 
@@ -32,6 +30,6 @@ class CreateSessionsTable extends Migration
     {	Schema::disableForeignKeyConstraints();
         Schema::connection('news-rs')->disableForeignKeyConstraints();
 	Schema::connection('mysqsl2')->disableForeignKeyConstraints();
-	Schema::dropIfExists('sessions');
+	Schema::dropIfExists('jenis_darah');
     }
 }

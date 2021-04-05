@@ -22,9 +22,13 @@ class CreateUsersTable extends Migration
     {
         
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_user');
             $table->string('name');
             $table->string('email')->unique();
+            $table->char('jenis_kel');
+            $table->string('alamat');
+            $table->bigInteger('gol_dar')->unsigned();
+            $table->date('tanggal_lahir');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('verify_code')->nullable();
             $table->string('password');
@@ -41,7 +45,9 @@ class CreateUsersTable extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::dropIfExists('users');
+    {	Schema::disableForeignKeyConstraints();
+        Schema::connection('news-rs')->disableForeignKeyConstraints();
+	Schema::connection('mysqsl2')->disableForeignKeyConstraints();
+	Schema::dropIfExists('users');
     }
 }

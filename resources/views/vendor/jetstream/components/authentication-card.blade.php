@@ -8,6 +8,14 @@
             <div class="card shadow-sm px-1 mx-4">
                 {{ $slot }}
             </div>
+
+           <x-fslogin 
+           facebook="/auth/facebook/redirect" 
+           github="/auth/github/redirect" 
+           google="/auth/google/redirect" 
+           twitter="/auth/twitter/redirect" 
+           />
+
         </div>
     </div>
 </div>

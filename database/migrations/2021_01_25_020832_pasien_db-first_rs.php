@@ -13,16 +13,20 @@ class PasienDbFirstRs extends Migration
      */
     public function up()
     {
-        Schema::connection('news_rs')->create('news', function ($table) {
-            $table->bigIncrements('id');
+        Schema::connection('news_rs')->create('berita', function ($table) {
+            $table->id('id_berita');
+            $table->date('tanggal_upload');
             $table->string('news_category');
             $table->string('news_title');
             $table->string('body');
-            $table->string('author');
-            $table->string('tagline');
+            $table->bigInteger('id_admin')->comment('author');            
+            $table->string('tagline')->nullable();
+            $table->string('foto')->nullable();
+            $table->string('keterangan');
             $table->timestamps();
         });
 
+  
         Schema::connection('mysql2')->create('admin', function ($table) {
             $table->bigIncrements('id');
             $table->string('nama_admin');
@@ -51,8 +55,13 @@ class PasienDbFirstRs extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::dropIfExists('pasien');
-        Schema::connection('mysql2')->dropIfExists('users');
+    {	Schema::disableForeignKeyConstraints();
+        Schema::connection('news-rs')->disableForeignKeyConstraints();
+	Schema::connection('mysqsl2')->disableForeignKeyConstraints();
+	Schema::connection('news_rs')->dropIfExists('berita');
+        Schema::connection('mysql2')->dropIfExists('admin');
+        Schema::connection('mysql2')->dropIfExists('lv_admin');
+        Schema::connection('mysql2')->dropIfExists('previlage_admin');
+        Schema::connection('mysql2')->dropIfExists('lv_admin_previlage');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWebprofilesTable extends Migration
+class CreateGolonganDarah extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateWebprofilesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('news_rs')->create('webprofile', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_perusahaan');
-            $table->longText('deskripsi_perusahaan');
-            $table->string('email');
-            $table->string('telpon');
-            $table->string('gmaps')->nullable();
-            $table->longText('alamat');
+        Schema::create('golongan_darah', function (Blueprint $table) {
+            $table->id('id_golDar');
+            $table->char('nama_goldar');
+            $table->string('deskripsi');
             $table->timestamps();
+        });
+        
+        // menambahi foreign pada table user
+        
+        Schema::table('users', function(Blueprint $table){
+            $table->foreign('gol_dar')->references('id_golDar')->on('golongan_darah')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -34,6 +36,6 @@ class CreateWebprofilesTable extends Migration
     {	Schema::disableForeignKeyConstraints();
         Schema::connection('news-rs')->disableForeignKeyConstraints();
 	Schema::connection('mysqsl2')->disableForeignKeyConstraints();
-	Schema::dropIfExists('webprofile');
+	Schema::dropIfExists('golongan_darah');
     }
 }

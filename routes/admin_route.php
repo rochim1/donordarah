@@ -17,21 +17,27 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/admin', function () {
-    return view('admin.index');
-});
-Route::get('/admin', function () {
-    return view('admin.index');
-});
-Route::get('/admin', function () {
-    return view('admin.index');
-});
-Route::get('/webprofile', function () {
-    return view('admin.webprofile');
+// Route::middleware(['auth', 'second'])->group(function () {
+    
+// });
+Route::middleware(['auth'])->group(function () {
+    
+    Route::get('/admin', function () {
+        return view('admin.index');
+    });
+    Route::get('/admin', function () {
+        return view('admin.index');
+    });
+    Route::get('/admin', function () {
+        return view('admin.index');
+    });
+    Route::get('/webprofile', function () {
+        return view('admin.webprofile');
+    });
+    
+    Route::post('/webprofile', [admincontroller::class, 'webprofile']);
 });
 
 Route::get('/about', function () {
     return view('menu.learnBlade');
 })->name('about');
-Route::post('/webprofile', [admincontroller::class, 'webprofile']);

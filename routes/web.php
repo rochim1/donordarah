@@ -25,7 +25,7 @@ Route::get('forget-password', [App\Http\Controllers\auth\ForgotPasswordControlle
 Route::post('forget-password', [App\Http\Controllers\auth\ForgotPasswordController::class,'postEmail'])->name('forget-password');
 // middleware untuk dasboar hanya bisa di buka oleh verificated user
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.index');
 })->name('dashboard');
 
 // Auth::routes();

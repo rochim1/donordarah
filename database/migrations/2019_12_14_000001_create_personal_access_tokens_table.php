@@ -30,7 +30,9 @@ class CreatePersonalAccessTokensTable extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::dropIfExists('personal_access_tokens');
+    {	Schema::disableForeignKeyConstraints();
+        Schema::connection('news-rs')->disableForeignKeyConstraints();
+	Schema::connection('mysqsl2')->disableForeignKeyConstraints();
+	Schema::dropIfExists('personal_access_tokens');
     }
 }

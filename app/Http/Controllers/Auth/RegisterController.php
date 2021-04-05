@@ -83,7 +83,7 @@ class RegisterController extends Controller
     //     return User::create([
     //         'name' => $data['name'],
     //         'email' => $data['email'],
-    //         'level' => 'admin',
+            'level' => 'admin',
     //         'verify_code' => $hashed,
     //         'password' =>  Hash::make($data['password']),
     //         'email_verified_at' => null,
@@ -120,7 +120,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $array['name'],
             'email' => $array['email'],
-            'level' => 'admin',
+            // 'level' => 'admin',
             'verify_code' => $hashed,
             'password' => $hashed,
             'email_verified_at' => null,
@@ -159,7 +159,7 @@ class RegisterController extends Controller
         $register = User::create([
             'name' => $array['name'],
             'email' => $array['email'],
-            'level' => 'admin',
+            // 'level' => 'admin',
             'verify_code' => $hashed,
             'password' => $hashed,
             'email_verified_at' => null,

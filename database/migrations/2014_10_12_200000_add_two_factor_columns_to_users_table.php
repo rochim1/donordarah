@@ -30,8 +30,10 @@ class AddTwoFactorColumnsToUsersTable extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::table('users', function (Blueprint $table) {
+    {	Schema::disableForeignKeyConstraints();
+        Schema::connection('news-rs')->disableForeignKeyConstraints();
+	Schema::connection('mysqsl2')->disableForeignKeyConstraints();
+	Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('two_factor_secret', 'two_factor_recovery_codes');
         });
     }
