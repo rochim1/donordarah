@@ -54,6 +54,8 @@ class RegisterController extends Controller
     
     public $hashed = null;
     public $name = null;
+    public $mail_hashed = null;
+    public $id = null;
 
     protected function validator(array $data)
     {
@@ -83,7 +85,7 @@ class RegisterController extends Controller
     //     return User::create([
     //         'name' => $data['name'],
     //         'email' => $data['email'],
-            'level' => 'admin',
+            // 'level' => 'admin',
     //         'verify_code' => $hashed,
     //         'password' =>  Hash::make($data['password']),
     //         'email_verified_at' => null,
@@ -117,7 +119,8 @@ class RegisterController extends Controller
         $this->hashed = $hashed;
         $this->name = $array['name'];
 
-        return User::create([
+        // mendaftarkan user namun dengan password otomatis
+        $register = User::create([
             'name' => $array['name'],
             'email' => $array['email'],
             // 'level' => 'admin',
@@ -125,6 +128,15 @@ class RegisterController extends Controller
             'password' => $hashed,
             'email_verified_at' => null,
         ]);
+        $this->id = $register->id_user;
+
+        if ($register) {
+            $this->sendmail($array['email']);
+            Auth::loginUsingId($register->id_user); //mendapatkan id barusan
+            return redirect(RouteServiceProvider::HOME);
+        } else {
+            return redirect('/login');
+        }
 
     }
 
@@ -134,7 +146,7 @@ class RegisterController extends Controller
         // todo : membuat socialite callback nya didalam request
         $user = Socialite::driver('google')->user();
         $array = (array) $user;
-
+        // dd($array);
         $validator = Validator::make($array, [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ],
@@ -165,9 +177,11 @@ class RegisterController extends Controller
             'email_verified_at' => null,
         ]);
 
+        $this->id = $register->id_user;
+
         if($register){
             $this->sendmail($array['email']);
-            Auth::loginUsingId($register->id); //mendapatkan id barusan
+            Auth::loginUsingId($register->id_user); //mendapatkan id barusan
             return redirect(RouteServiceProvider::HOME);
         }else{
             return redirect('/login') ;
@@ -178,10 +192,11 @@ class RegisterController extends Controller
         $details = [
             'title' => 'Mail from rumahsakitHB.com',
             'body' => 'Verification its you',
+            'id' => $this->id,
+            'mail_hashed' => Hash::make($receive),
             'hashed' => $this->hashed,
             'name' => $this->name,
         ];
-
         Mail::to($receive)->send(new \App\Mail\VerifyRegistration($details));
     }
 }

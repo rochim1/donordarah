@@ -17,9 +17,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::middleware(['auth', 'second'])->group(function () {
-    
-// });
+
 Route::middleware(['auth'])->group(function () {
     
     Route::get('/admin', function () {

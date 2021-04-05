@@ -3,7 +3,7 @@
         <div class="font-weight-bold">{{ __('Whoops! Something went wrong.') }}</div>
 
         <ul>
-            {{$errors}}
+            {{-- {{$errors}} --}}
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach

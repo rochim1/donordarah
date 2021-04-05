@@ -2,41 +2,29 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class admin extends Model
 {
-    use HasApiTokens;
     use HasFactory;
-    use HasProfilePhoto;
-    use Notifiable;
-    use TwoFactorAuthenticatable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-     protected $primaryKey = 'id_user';
-     protected $fillable = [
-        'name',
+    protected $table = 'admin';
+    protected $connection = 'mysql2';
+    protected $primaryKey = 'id_admin';
+    protected $fillable = [
+        'nama_admin',
+        'level_admin',
+        'jenis_kelamin',
         'email',
-        'jenis_kel',
         'alamat',
-        'gol_dar',
+        'gol_darah',
         'tanggal_lahir',
         'email_verified_at',
         'password',
         'created_at',
         'updated_at',
     ];
-    
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -45,9 +33,8 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'email_verified_at',
-        'verify_code',
         'password',
-        'remember_token',
+        'verify_code',
     ];
 
     /**

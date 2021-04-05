@@ -153,7 +153,7 @@
                                     
                                     echo $pieces[0]." ".substr($pieces[1], 0, 1);        
                                 } else {
-                                    echo "cuma satu";
+                                    echo $nama;
                                 }
                             @endphp
                             <i class="mdi mdi-chevron-down"></i>
