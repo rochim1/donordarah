@@ -21,7 +21,12 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if (request()->is('admin/*')) {
+            config()->set('fortify.guard', 'admin');
+            config()->set('fortify.passwords', 'admin');
+            config()->set('fortify.home', '/admin');
+            // echo config()->get('fortify.guard');
+        }
     }
 
     /**
@@ -43,5 +48,15 @@ class FortifyServiceProvider extends ServiceProvider
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
+
+        $this->app->singleton(
+            \Laravel\Fortify\Contracts\LogoutResponse::class,
+            \App\Http\Responses\LogoutResponse::class
+        );
+
+        // custom fungsi dari laravel fortify untuk mendefinisikan halaman register dan login secara manual
+        // dapat digunakan untuk kondisi tertentu
+        // Fortify::registerView('auth.register');
+        // Fortify::loginView('auth.login');
     }
 }

@@ -24,7 +24,7 @@
     
 @php
     // dd(session()->all());
-    // dd(Auth::user());
+    // dd(Auth::guard('admin')->user());
 @endphp
     <!-- Begin page -->
     <div id="wrapper">
@@ -145,8 +145,8 @@
                         <img src="assets_admin/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
                         <span class="pro-user-name ml-1">
                             @php
-                                
-                                $nama = Auth::user()->name;
+                                // dd(Auth::guard('admin')->user());
+                                $nama = Auth::guard('admin')->user()->nama_admin;
                                 $pieces = explode(" ", $nama);
                                 
                                 if (count($pieces) >= 2 ) {
@@ -186,7 +186,7 @@
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <form action="{{url('/logout')}}" method="POST">
+                        <form action="{{url('/admin/logout')}}" method="POST">
                         @csrf
                         <button type="submit" class="dropdown-item notify-item">
                             <i class="mdi mdi-logout-variant"></i>
@@ -209,7 +209,7 @@
 
             <!-- LOGO -->
             <div class="logo-box">
-                <a href="index.html" class="logo text-center logo-dark">
+                <a href="/" target="blank" class="logo text-center logo-dark">
                     <span class="logo-lg">
                         <img src="assets/images/logo-3.png" alt="" height="40">
                         <!-- <span class="logo-lg-text-dark">Simple</span> -->
@@ -265,9 +265,9 @@
                     <img src="assets_admin/images/users/avatar-1.jpg" alt="" class="avatar-md rounded-circle">
                 </div>
                 <div class="user-info text-capitalize">
-                    <a href="#">{{ Auth::user()->name }}</a>
+                    <a href="#">{{ Auth::guard('admin')->user()->nama_admin }}</a>
                     <p class="text-muted m-0">
-                        {{ Auth::user()->level }}
+                        {{ Auth::guard('admin')->user()->level_admin }}
                     </p>
                 </div>
             </div>
@@ -287,7 +287,7 @@
                     </li>
                     
                     <li>
-                        <a href="/webprofile">
+                        <a href="/admin/webprofile">
                             <i class="ti-world"></i>
                             <span> Web Profile </span>
                         </a>

@@ -20,14 +20,14 @@ class VerifyRegistration extends Mailable
     public $name;
     public $hashed;
     public $mail_hashed;
-    public $id;
+    public $status;
 
     public function __construct($send_data)
     {
         $this->name = $send_data['name'];
         $this->hashed = $send_data['hashed'];
         $this->mail_hashed = $send_data['mail_hashed'];
-        $this->id = $send_data['id'];
+        $this->status = $send_data['status'];
     }
 
     /**

@@ -20,6 +20,7 @@ class EditAdmin extends Migration
             $table->char('jenis_kelamin');
             $table->string('email');
             $table->string('alamat')->nullable();
+            // $table->bigInteger('gol_darah')->nullable()->unsigned();
             $table->bigInteger('gol_darah')->unsigned();
             $table->date('tanggal_lahir');
             $table->date('email_verified_at')->nullable();

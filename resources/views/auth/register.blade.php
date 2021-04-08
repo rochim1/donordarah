@@ -7,7 +7,7 @@
         <x-jet-validation-errors class="mb-3" />
 
         <div class="card-body">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('admin.register') }}">
                 @csrf
 
                 <div class="form-group">
@@ -56,7 +56,7 @@
 
                 <div class="mb-0">
                     <div class="d-flex justify-content-end align-items-baseline">
-                        <a class="text-muted mr-3 text-decoration-none" href="{{ route('login') }}">
+                        <a class="text-muted mr-3 text-decoration-none" href="{{ route('admin.login') }}">
                             {{ __('Already registered?') }}
                         </a>
 

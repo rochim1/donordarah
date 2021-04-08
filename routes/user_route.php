@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,17 +65,32 @@ Route::middleware(['mainVariable'])->group(function(){
     Route::get('/permohonan/list/{id}', function (Request $request,$id, $data) {
         return view('menu.listpermohonan', compact('data'));
     })->name('listpermohonan');   
+ 
+    Route::get('/permohonan/list/{id}/detail', function (Request $request,$id, $data) {
+        return view('menu.detail_permohonan', compact('data'));
+    })->name('detaillistpermohonan');   
     
     Route::get('/permohonan/list/{id}/edit/{item}', function (Request $request,$id, $item, $data) {
         return view('menu.editpermohonan', compact('data'));
     })->name('listpermohonan');   
 });
 
-Route::get('/loginuser', function () {
+Route::get('/login', function () {
     return view('menu.loginuser');
-})->name('loginuser');
+})->name('login');
 
-Route::get('/registeruser', function () {
+
+Route::get('/register', function () {
     return view('menu.registeruser');
-})->name('registeruser');
+})->name('register');
+
+Route::post('/register', [usercontroller::class, 'register'])->name('register-user');
+
+$limiter = config('fortify.limiters.login');
+
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+    ->middleware(array_filter([
+        'guest:web',
+        $limiter ? 'throttle:' . $limiter : null,
+    ]))->name('login-user');
 

@@ -14,7 +14,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('admin.login') }}">
                 @csrf
                 <div class="form-group">
                     <x-jet-label value="{{ __('Email') }}" />
@@ -43,7 +43,7 @@
 
                 <div class="mb-0">
                     <div class="d-flex justify-content-end align-items-baseline">
-                    <a class="text-muted mr-3" href="{{ route('register') }}">
+                    <a class="text-muted mr-3" href="{{ route('admin.register') }}">
                                 {{ __('create account') }}
                             </a>
                         @if (Route::has('password.request'))

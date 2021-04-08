@@ -76,10 +76,11 @@ return [
         ],
 
         'admin' => [
-            'driver' => 'database',
-            'table' => App\Models\admin::class,
+            'driver' => 'eloquent',
+            'model' => App\Models\admin::class,
         ],
         
+        // sepertinya harus pakai model untuk fortify
         // 'admin' => [
         //     'driver' => 'database',
         //     'table' => 'second_rs.admin',

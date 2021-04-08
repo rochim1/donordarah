@@ -52,7 +52,7 @@
         </div>
         <!-- end preloader -->
         <!-- Start header -->
-        @if(!Route::is('loginuser','registeruser'))
+        @if(!Route::is('login','register'))
         <header id="header" class="wpo-site-header wpo-header-style-3">
             <div class="topbar">
                 <div class="container">
@@ -68,8 +68,8 @@
                         <div class="col col-md-6 col-sm-5 col-12">
                             <div class="contact-info">
                                 <ul>
-                                    <li><a href="{{route('loginuser')}}">Masuk</a></li>
-                                    <li><a href="{{route('registeruser')}}">Daftar</a></li>
+                                    <li><a href="{{route('login')}}">Masuk</a></li>
+                                    <li><a href="{{route('register')}}">Daftar</a></li>
                                     <li><a class="theme-btn" href="donate.html">Donor Yuk</a></li>
                                 </ul>
                             </div>
@@ -196,7 +196,7 @@
 
         @yield('content')
 
-        @if(!Route::is('loginuser','registeruser'))
+        @if(!Route::is('login','register'))
         <div class="wpo-ne-footer">
             <!-- start wpo-news-letter-section -->
             <section class="wpo-news-letter-section">

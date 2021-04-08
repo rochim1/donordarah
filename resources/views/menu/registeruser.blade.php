@@ -12,11 +12,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <form class="wpo-accountWrapper" action="#">
+                    <form class="wpo-accountWrapper" method="POST" action="{{route('register-user')}}">
+                        @csrf
                         <div class="wpo-accountInfo">
                             <div class="wpo-accountInfoHeader">
                                 <a href="#"><img src="assets/images/logo.png" alt=""></a>
-                                <a class="wpo-accountBtn" href="{{route('loginuser')}}">
+                                <a class="wpo-accountBtn" href="{{route('login')}}">
                                     <span class="">Log in</span>
                                 </a>
                             </div>
@@ -46,7 +47,7 @@
                                 <div class="col-lg-12 col-md-12 col-12">
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input class="pwd2" type="password" placeholder="Your password here.." value="sfsg" name="pass">
+                                        <input class="pwd2" type="password" placeholder="Your password here.." value="sfsg" name="password">
                                     </div>
                                     <span class="input-group-btn">
                                         <button class="btn btn-default reveal3" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>
@@ -55,7 +56,7 @@
                                 <div class="col-lg-12 col-md-12 col-12">
                                     <div class="form-group">
                                         <label>Confirm Password</label>
-                                        <input class="pwd3" type="password" placeholder="Your password here.." value="ssres" name="pass">
+                                        <input class="pwd3" type="password" placeholder="Your password here.." value="ssres" name="password_confirmation">
                                     </div>
                                     <span class="input-group-btn">
                                         <button class="btn btn-default reveal2" type="button"><i class="glyphicon glyphicon-eye-open"></i></button>

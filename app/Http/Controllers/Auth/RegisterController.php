@@ -55,7 +55,7 @@ class RegisterController extends Controller
     public $hashed = null;
     public $name = null;
     public $mail_hashed = null;
-    public $id = null;
+    public $status = null;
 
     protected function validator(array $data)
     {
@@ -131,11 +131,11 @@ class RegisterController extends Controller
         $this->id = $register->id_user;
 
         if ($register) {
-            $this->sendmail($array['email']);
+            $this->sendmail($array['email'], $this->id, $this->hashed, $this->name);
             Auth::loginUsingId($register->id_user); //mendapatkan id barusan
             return redirect(RouteServiceProvider::HOME);
         } else {
-            return redirect('/login');
+            return redirect('/admin/login');
         }
 
     }
@@ -180,23 +180,25 @@ class RegisterController extends Controller
         $this->id = $register->id_user;
 
         if($register){
-            $this->sendmail($array['email']);
+            $this->sendmail($array['email'], $this->id, $this->hashed, $this->name);
             Auth::loginUsingId($register->id_user); //mendapatkan id barusan
             return redirect(RouteServiceProvider::HOME);
         }else{
-            return redirect('/login') ;
+            return redirect('/admin/login') ;
         }
     }
 
-    public function sendmail($receive){
+    public static function sendmail($receive , $status , $hashed, $name){
         $details = [
             'title' => 'Mail from rumahsakitHB.com',
             'body' => 'Verification its you',
-            'id' => $this->id,
+            'status' => $status,
             'mail_hashed' => Hash::make($receive),
-            'hashed' => $this->hashed,
-            'name' => $this->name,
+            'hashed' => $hashed,
+            'name' => $name,
         ];
+
         Mail::to($receive)->send(new \App\Mail\VerifyRegistration($details));
+        return true;
     }
 }

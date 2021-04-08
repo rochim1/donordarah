@@ -100,12 +100,12 @@
                             <hr class="dropdown-divider">
 
                             <!-- Authentication -->
-                            <x-jet-dropdown-link href="{{ route('logout') }}"
+                            <x-jet-dropdown-link href="{{ route('admin.logout') }}"
                                                  onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                 {{ __('Log out') }}
                             </x-jet-dropdown-link>
-                            <form method="POST" id="logout-form" action="{{ route('logout') }}">
+                            <form method="POST" id="logout-form" action="{{ route('admin.logout') }}">
                                 @csrf
                             </form>
                         </x-slot>

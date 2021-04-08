@@ -23,14 +23,14 @@ use Illuminate\Support\Facades\Auth;
 // route untuk lupa password
 Route::get('forget-password', [App\Http\Controllers\auth\ForgotPasswordController::class,'getEmail'])->name('forget-password');
 Route::post('forget-password', [App\Http\Controllers\auth\ForgotPasswordController::class,'postEmail'])->name('forget-password');
-// middleware untuk dasboar hanya bisa di buka oleh verificated user
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('admin.index');
-})->name('dashboard');
+// middleware untuk dasboar hanya bisa di buka oleh verificated user dengan guard sanctum
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('admin.index');
+// })->name('dashboard');
 
 // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/auth/facebook/redirect', function () {
     return Socialite::driver('facebook')->redirect();

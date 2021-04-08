@@ -12,7 +12,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <form class="wpo-accountWrapper" action="#">
+                <form class="wpo-accountWrapper" method="POST" action="{{route('login-user')}}">
+                    @csrf
                     <div class="wpo-accountInfo">
                         <div class="wpo-accountInfoHeader">
                             <a href="#"><img src="assets/images/logo-3.png" alt=""></a>
@@ -32,17 +33,23 @@
                     <div class="wpo-accountForm form-style">
                         <div class="fromTitle">
                             <h2>Login</h2>
+                            <x-jet-validation-errors class="mb-3 rounded-0" />
+                            @if(session()->has('message'))
+                                <div class="alert alert-success">
+                                    {{ session()->get('message') }}
+                                </div>
+                            @endif
                             <p>Sign into your pages account</p>
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12">
                                 <label>Email</label>
-                                <input type="text" id="email" name="email" placeholder="demo@gmail.com">
+                                <input type="text" id="email" name="email" placeholder="your email">
                             </div>
                             <div class="col-lg-12 col-md-12 col-12">
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input class="pwd6" type="password" placeholder="" value="123456" name="pass">
+                                    <input class="pwd6" type="password" placeholder="password" name="password">
                                 </div>
                                 <span class="input-group-btn">
                                     <button class="btn btn-default reveal6" type="button"><i
@@ -52,7 +59,14 @@
                             <div class="col-lg-12 col-md-12 col-12">
                                 <div class="check-box-wrap">
                                     <div class="input-box">
-                                        <input type="checkbox" id="fruit4" name="fruit-4" value="Strawberry">
+                                        <style>
+                                            input[type=checkbox] + label:before{
+                                                position: relative;
+                                                left: 0px;
+                                                margin-right: 15px ;
+                                            }
+                                        </style>
+                                        <input type="checkbox" id="fruit4" class="position-relative" name="remember">
                                         <label for="fruit4">Remember Me</label>
                                     </div>
                                     <div class="forget-btn">
@@ -73,7 +87,7 @@
                             <li><button class="linkedin" tabindex="0" type="button"><span><i
                                             class="fa fa-linkedin"></i></span></button></li>
                         </ul>
-                        <p class="subText">Don't have an account? <a href="register.html">Create free account</a></p>
+                        <p class="subText">Don't have an account? <a href="{{route('register')}}">Create free account</a></p>
                     </div>
                 </form>
             </div>

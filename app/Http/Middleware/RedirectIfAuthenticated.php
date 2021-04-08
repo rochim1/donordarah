@@ -24,7 +24,15 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
         // todo : guard pada laravel ?
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                
+                // atau juga bisa di definisikan di file fortifyServiceProvider
+                if (request()->is('admin/*') || request()->is('admin')) {
+                    // return "mantap";
+                    return redirect('/admin');
+                }else {
+                    return redirect(RouteServiceProvider::HOME);
+                }
+
             }
         }
 

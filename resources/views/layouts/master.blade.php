@@ -17,8 +17,11 @@
 
     {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
     {{-- <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet"> --}}
-    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
-    
+    {{-- <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet"> --}}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/owl.carousel.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/owl.theme.css')}}" rel="stylesheet">
@@ -31,31 +34,32 @@
     <link href="{{asset('assets/css/nice-select.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <style>
-        #navbar{
-                -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    line-height: 1.42857143;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1rem;
-    color: #525252;
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
-    padding-right: 15px;
-    padding-left: 15px;
-    width: auto;
-    border-top: 0;
-    box-shadow: none;
-    float: right!important;
-    display: block!important;
-    height: auto!important;
-    padding-bottom: 0;
-    overflow: visible!important;
-    margin-left: 0;
-    border-color: #e7e7e7;
-    text-transform: uppercase;
-    transition: all 0.5s;
-    margin-right: 100px;
+        #navbar {
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            line-height: 1.42857143;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1rem;
+            color: #525252;
+            -webkit-font-smoothing: antialiased;
+            box-sizing: border-box;
+            padding-right: 15px;
+            padding-left: 15px;
+            width: auto;
+            border-top: 0;
+            box-shadow: none;
+            float: right !important;
+            display: block !important;
+            height: auto !important;
+            padding-bottom: 0;
+            overflow: visible !important;
+            margin-left: 0;
+            border-color: #e7e7e7;
+            text-transform: uppercase;
+            transition: all 0.5s;
+            margin-right: 100px;
         }
+
     </style>
     @yield('style')
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -79,7 +83,7 @@
         </div>
         <!-- end preloader -->
         <!-- Start header -->
-        @if(!Route::is('loginuser','registeruser'))
+        @if(!Route::is('login','register'))
         <header id="header" class="wpo-site-header wpo-header-style-3">
             <div class="topbar">
                 <div class="container">
@@ -95,8 +99,23 @@
                         <div class="col col-md-6 col-sm-5 col-12">
                             <div class="contact-info">
                                 <ul>
-                                    <li><a href="{{route('loginuser')}}">Masuk</a></li>
-                                    <li><a href="{{route('registeruser')}}">Daftar</a></li>
+                                    @if (Auth::guard('web')->check())
+                                    <li>
+
+                                        <form action="{{url('/logout')}}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item notify-item">
+                                                <i class="mdi mdi-logout-variant"></i>
+                                                <span>Logout</span>
+                                            </button>
+                                        </form>
+
+                                    </li>
+                                    <li><a href="{{route('login')}}">my profile</a></li>
+                                    @else
+                                    <li><a href="{{route('login')}}">Masuk</a></li>
+                                    <li><a href="{{route('register')}}">Daftar</a></li>
+                                    @endif
                                     <li><a class="theme-btn" href="donate.html">Donor Yuk</a></li>
                                 </ul>
                             </div>
@@ -120,7 +139,7 @@
 
                     <div id="navbar" class=" collapse navbar-right float-right navigation-holder">
                         <button class="close-navbar"><i class="ti-close"></i></button>
-{{-- todo --}}
+                        {{-- todo --}}
                         <ul class="nav navbar-nav">
                             <li><a href="{{route('home')}}">Home</a></li>
 
@@ -133,7 +152,7 @@
                                     <li><a href="{{route('kasus')}}">Kasus</a></li>
                                 </ul>
                             </li>
-                            
+
                             <li><a href="{{route('event')}}">Event</a></li>
 
                             <li class="menu-item-has-children">
@@ -146,7 +165,7 @@
                                     <li><a href="error.html">404 Page</a></li>
                                 </ul>
                             </li>
-                            
+
                             <li class="menu-item-has-children">
                                 <a href="{{route('berita')}}">Berita</a>
                                 <ul class="sub-menu">
@@ -163,7 +182,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            
+
                             <li><a href="{{route('kontak')}}">Kontak</a></li>
                         </ul>
                     </div><!-- end of nav-collapse -->
@@ -226,7 +245,7 @@
 
         @yield('content')
 
-        @if(!Route::is('loginuser','registeruser'))
+        @if(!Route::is('login','register'))
         <div class="wpo-ne-footer">
             <!-- start wpo-news-letter-section -->
             <section class="wpo-news-letter-section">
@@ -345,8 +364,14 @@
     <!-- All JavaScript files
     ================================================== -->
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+    {{-- <script src="{{asset('assets/js/bootstrap.min.js')}}"></script> --}}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
+
     <!-- Plugins for this template -->
+
     <script src="{{asset('assets/js/jquery-plugin-collection.js')}}"></script>
     <!-- Custom script for this template -->
     <script src="{{asset('assets/js/script.js')}}"></script>
